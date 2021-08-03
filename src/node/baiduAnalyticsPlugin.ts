@@ -31,7 +31,7 @@ export const baiduAnalyticsPlugin: Plugin<BaiduAnalyticsPluginOptions> = (
     ),
 
     define: {
-      __BAIDU_UUID__: id,
+      __BAIDU_ID__: id,
     },
   }
 }

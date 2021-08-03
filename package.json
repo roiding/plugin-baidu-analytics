@@ -15,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/vuepress/plugin-baidu-analytics.git"
+    "url": "git+https://github.com/roiding/plugin-baidu-analytics.git"
   },
   "license": "MIT",
   "author": "roiding",
