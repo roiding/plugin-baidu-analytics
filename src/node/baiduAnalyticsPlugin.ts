@@ -10,7 +10,7 @@ export const baiduAnalyticsPlugin: Plugin<BaiduAnalyticsPluginOptions> = (
   app
 ) => {
   const plugin: PluginObject = {
-    name: 'plugin-baidu-analytics',
+    name: 'vuepress-plugin-baidu-analytics',
   }
 
   if (!id) {
