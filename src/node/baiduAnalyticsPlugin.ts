@@ -5,33 +5,29 @@ export interface BaiduAnalyticsPluginOptions {
   id: string
 }
 
-export const baiduAnalyticsPlugin: Plugin<BaiduAnalyticsPluginOptions> = (
-  { id },
-  app
-) => {
-  const plugin: PluginObject = {
-    name: 'vuepress-plugin-baidu-analytics',
+export const baiduAnalyticsPlugin =
+  ({ id }: BaiduAnalyticsPluginOptions): Plugin =>
+  (app) => {
+    const plugin: PluginObject = {
+      name: 'vuepress-plugin-baidu-analytics',
+    }
+
+    if (!id) {
+      logger.warn(`[${plugin.name}] 'id' is required`)
+      return plugin
+    }
+
+    if (app.env.isDev) {
+      return plugin
+    }
+
+    return {
+      ...plugin,
+
+      clientConfigFile: path.resolve(__dirname, '../client/config.js'),
+
+      define: {
+        __BAIDU_ID__: id,
+      },
+    }
   }
-
-  if (!id) {
-    logger.warn(`[${plugin.name}] 'id' is required`)
-    return plugin
-  }
-
-  if (app.env.isDev) {
-    return plugin
-  }
-
-  return {
-    ...plugin,
-
-    clientAppEnhanceFiles: path.resolve(
-      __dirname,
-      '../client/clientAppEnhance.js'
-    ),
-
-    define: {
-      __BAIDU_ID__: id,
-    },
-  }
-}
